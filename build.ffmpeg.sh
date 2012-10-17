@@ -33,7 +33,7 @@ else
     echo "* using existing ${LIBNAME}"
 fi
 
-mkdir -p ${DIR}/bin
+mkdir -p "${DIR}/bin"
 
 cd ${LIBNAME}
 
@@ -76,6 +76,8 @@ do
     echo ""
     echo "* Building ${LIBNAME} for ${PLATFORM} ${SDK_VERSION} (${ARCH})..."
 
+    mkdir -p "${DIR}/bin/${ARCH}"
+
     ./configure \
         --cc=${CC} \
         --target-os=${TARGET_OS} \
@@ -85,8 +87,8 @@ do
         --sysroot=${SDK} \
         --extra-cflags='${CFLAGS}' \
         --extra-ldflags='${LDFLAGS}' \
-        --prefix="${DIR}/bin/${ARCH}" \
-        ${CONFIGURE_FLAGS}
+        ${CONFIGURE_FLAGS} \
+        --prefix="${DIR}/bin/${ARCH}"
 
     make -j3 && make install
 
