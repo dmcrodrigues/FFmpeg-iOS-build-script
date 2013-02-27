@@ -1,13 +1,13 @@
 #!/bin/sh
 
 LIBNAME="ffmpeg"
-ARCHS="armv6 armv7 i386"
+ARCHS="armv7 armv7s i386"
 TARGET_OS=darwin
 
 DIR=`pwd`
 XCODE_SELECT="xcode-select"
 XCODE=$(${XCODE_SELECT} --print-path)
-SDK_VERSION="5.1"
+SDK_VERSION="6.1"
 
 DISABLED_COMPONENTS="--disable-everything"
 
@@ -53,12 +53,7 @@ do
         PLATFORM="iPhoneOS"
         COMPILER="llvm-gcc"
         CONFIG_ARCH="arm"
-        if [ "${ARCH}" == "armv6" ]
-        then
-            CPU="arm1176jzf-s"
-        else
-            CPU="cortex-a8"
-        fi
+        CPU="cortex-a8"
     fi
 
     XCRUN_SDK=$(echo ${PLATFORM} | tr '[:upper:]' '[:lower:]')
@@ -104,8 +99,8 @@ mkdir -p ${DIR}/lib
 # packing process
 for LIB in ${LIBS}
 do
-lipo -create "${DIR}/bin/armv6/lib/${LIB}.a" \
-             "${DIR}/bin/armv7/lib/${LIB}.a" \
+lipo -create "${DIR}/bin/armv7/lib/${LIB}.a" \
+             "${DIR}/bin/armv7s/lib/${LIB}.a" \
              "${DIR}/bin/i386/lib/${LIB}.a" \
              -output "${DIR}/lib/${LIB}.a"
 done
