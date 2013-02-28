@@ -3,9 +3,12 @@ FFmpeg iOS build script
 
 The script to build FFmpeg for iOS supports:
 
-- armv6
 - armv7
+- armv7s
 - i386 (simulator)
+
+> **Note** 
+> The architecture armv6 is no longer supported.
 
 The script generates (fat) static libraries including the 3 architectures on `lib/` folder for development purposes. You may and **you should** build the FFmpeg libraries **only with the architectures supported in production** when generating the final release.
 
