@@ -53,7 +53,7 @@ do
         PLATFORM="iPhoneOS"
         COMPILER="llvm-gcc"
         CONFIG_ARCH="arm"
-        CPU="cortex-a8"
+        CPU="cortex-a9"
     fi
 
     XCRUN_SDK=$(echo ${PLATFORM} | tr '[:upper:]' '[:lower:]')
