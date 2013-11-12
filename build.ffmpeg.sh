@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Please run this command to set the correct xcode-select path of xcode
+# sudo xcode-select -switch /Applications/Xcode.app
+
 LIBNAME="ffmpeg"
 ARCHS="armv7 armv7s i386"
 TARGET_OS=darwin
